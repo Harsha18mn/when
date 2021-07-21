@@ -1,3 +1,4 @@
+string output = "strg"
 pipeline {
 	agent any
 	parameters {
@@ -14,6 +15,7 @@ pipeline {
 			steps {
 				echo "DEPLOY TO TEST ENVIRONMENT ......."
 				sh 'sleep 5'
+				output = "abc"
 			}		
 		}
 		stage('DEPLOY_PROD') {
@@ -21,7 +23,7 @@ pipeline {
 				environment name: 'DEPLOY_TO', value: 'prod'
 			}	
 			steps {
-				echo ""
+				echo $output  //abc
 				echo "DEPLOY TO PRODUCTION ......."
 				sh 'sleep 5'
 				//sh 'exit 1'
@@ -29,6 +31,7 @@ pipeline {
 		}
 
 	}	
+
 	
 			post {
 			success {
