@@ -31,8 +31,8 @@ pipeline {
 	}	
 	
 			post {
-			failure {
-			 echo "You can always see me."
+			success {
+			 echo "success"
 			}
 			
 			
